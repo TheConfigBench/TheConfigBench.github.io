@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TheConfigBench — Electronics for the Curious Mind</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #111;
+      border-bottom: 2px solid #f90;
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    header .brand h1 {
+      font-size: 1.8rem;
+      color: #f90;
+      letter-spacing: 1px;
+    }
+    header .brand p {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 2px;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #f90; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #111 0%, #1a1a1a 60%, #1c1200 100%);
+      padding: 72px 40px;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+    .hero h2 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .hero h2 span { color: #f90; }
+    .hero p {
+      font-size: 1.05rem;
+      color: #aaa;
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: #f90;
+      color: #000;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      margin: 6px;
+    }
+    .btn:hover { background: #ffaa22; }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid #f90;
+      color: #f90;
+    }
+    .btn.secondary:hover { background: #f901; }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 40px;
+    }
+    section h3 {
+      font-size: 1.4rem;
+      color: #f90;
+      margin-bottom: 24px;
+      border-left: 4px solid #f90;
+      padding-left: 12px;
+    }
+
+    /* ── EPISODE GRID ── */
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .episode-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .episode-card:hover { border-color: #f90; }
+    .episode-card .ep-num {
+      font-size: 0.75rem;
+      color: #f90;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .episode-card h4 {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .episode-card p {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 14px;
+    }
+    .episode-card a {
+      font-size: 0.82rem;
+      color: #f90;
+      text-decoration: none;
+    }
+    .episode-card a:hover { text-decoration: underline; }
+
+    /* ── RESOURCES ── */
+    .resource-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .resource-list li a {
+      display: block;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 14px 18px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .resource-list li a:hover { border-color: #f90; color: #f90; }
+    .resource-list li a span { display: block; font-size: 0.75rem; color: #666; margin-top: 3px; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-grid p { color: #aaa; font-size: 0.95rem; margin-bottom: 12px; }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .contact-box p { color: #888; margin-bottom: 16px; }
+    .contact-box a { color: #f90; text-decoration: none; font-size: 1.05rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid #222;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: #555;
+    }
+    footer a { color: #888; text-decoration: none; }
+    footer a:hover { color: #f90; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1f1f1f;
+    }
+      .youtube-btn { background: #cc0000 !important; color: #ffffff !important; font-weight: 700; border: none; }
+    .youtube-btn:hover { background: #aa0000 !important; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <h1>@TheConfigBench</h1>
+    <p>Electronics Education for Entry &amp; Mid-Level Technicians</p>
+  </div>
+  <nav>
+    <a href="#episodes">Episodes</a>
+    <a href="#resources">Resources</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h2>Learn Electronics <span>the Right Way</span></h2>
+  <p>Practical, bench-tested tutorials for entry to mid-level electronics technicians. No fluff — just real circuits, real meters, and real theory.</p>
+  <a class="btn" href="https://www.youtube.com/@TheConfigBench" target="_blank">Watch on YouTube</a>
+  <a class="btn secondary" href="#resources">Download Resources</a>
+</div>
+
+<!-- EPISODES -->
+<section id="episodes">
+  <h3>Latest Episodes</h3>
+  <div class="episode-grid">
+    <div class="episode-card">
+      <div class="ep-num">V5 · V6 · V7</div>
+      <h4>Ohm's Law — Theory &amp; Labs</h4>
+      <p>Three-part series covering Ohm's Law theory, lab work with real resistors, and series/parallel circuits.</p>
+      <a href="https://www.youtube.com/@TheConfigBench" target="_blank">Watch on YouTube →</a>
+    </div>
+    <div class="episode-card">
+      <div class="ep-num">V8</div>
+      <h4>Ohm's Law Challenge + Giveaway</h4>
+      <p>Six circuit problems, series-parallel curveball, and an FNIRSI DSO152 oscilloscope giveaway.</p>
+      <a href="https://www.youtube.com/@TheConfigBench" target="_blank">Watch on YouTube →</a>
+    </div>
+    <div class="episode-card">
+      <div class="ep-num">V9 · COMING SOON</div>
+      <h4>Watt's Law — Power in Circuits</h4>
+      <p>What happens when you exceed a resistor's power rating? Smoke test demo and full theory walkthrough.</p>
+      <a href="https://www.youtube.com/@TheConfigBench" target="_blank">Subscribe to get notified →</a>
+    </div>
+    <div class="episode-card">
+      <div class="ep-num">TWD · 200-SERIES</div>
+      <h4>Tuesdays with Dom</h4>
+      <p>Weekly mentoring sessions with Dom — hands-on projects for young technicians just getting started.</p>
+      <a href="https://www.youtube.com/@TheConfigBench" target="_blank">Watch on YouTube →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <h3>Downloads &amp; Resources</h3>
+  <ul class="resource-list">
+    <li><a href="#">Lab 3 Script — Ohm's Law <span>PDF · Rev 4</span></a></li>
+    <li><a href="#">V8 Circuit Problems &amp; Answer Key <span>PDF</span></a></li>
+    <li><a href="#">Qucs Schematic Build Guide <span>PDF</span></a></li>
+    <li><a href="#">Simpson 260 Calibration Guide <span>PDF · Rev 4b</span></a></li>
+    <li><a href="#">Butt Set Field Troubleshooting <span>PDF · TCB-TELECOM-001</span></a></li>
+    <li><a href="#">Nmap Learning Guide <span>PDF</span></a></li>
+  </ul>
+  <p style="margin-top:18px; font-size:0.82rem; color:#555;">More resources added with each episode. Subscribe on YouTube to stay current.</p>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <h3>About TheConfigBench</h3>
+  <div class="about-grid">
+    <div>
+      <p>TheConfigBench is a YouTube channel built for entry to mid-level electronics technicians who want real, practical knowledge — not just theory on a whiteboard.</p>
+      <p>Every episode is filmed at a real workbench using real test equipment: Simpson 260 meters, a SIGLENT oscilloscope, Qucs for schematics, and a hands-on approach to every concept.</p>
+      <p>The companion textbook for this series is <em>Complete Electronics Self-Teaching Guide</em> by Boysen &amp; Kybett — highly recommended.</p>
+    </div>
+    <div>
+      <p>Episodes follow a structured curriculum — Ohm's Law, Watt's Law, series/parallel circuits, transistor biasing, and beyond.</p>
+      <p>The <strong>Tuesdays with Dom</strong> sub-series (200-series episodes) documents weekly mentoring sessions with a 13-year-old learning electronics from scratch — great for younger viewers or complete beginners.</p>
+      <p>New episodes drop weekly. Giveaways with each major topic series.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h3>Get in Touch</h3>
+  <div class="contact-box">
+    <p>Questions, collaborations, or just want to say hi?</p>
+    <a href="mailto:john@theconfigbench.com">john@theconfigbench.com</a>
+    <br/><br/>
+    <a class="btn youtube-btn" href="https://www.youtube.com/@TheConfigBench" target="_blank">Subscribe on YouTube</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 TheConfigBench &nbsp;·&nbsp; <a href="mailto:john@theconfigbench.com">john@theconfigbench.com</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@TheConfigBench" target="_blank">YouTube</a></p>
+</footer>
+
+</body>
+</html>
